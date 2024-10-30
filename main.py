@@ -30,14 +30,16 @@ class Window(QWidget):
         self.circleView.setRenderHint(QPainter.RenderHint.Antialiasing)
         self.ledCircles = []
 
-        divisions = (2 * math.pi) / 16
-        radius = 75.0
+        numLeds = 16
+        circleRadius = 24
+        divisions = (2 * math.pi) / numLeds
+        outerRadius = 75.0
 
-        for i in range(16):
-            x = radius * math.sin(divisions * i)
-            y = radius * math.cos(divisions * i)
+        for i in range(numLeds):
+            x = outerRadius * math.sin(divisions * i)
+            y = outerRadius * math.cos(divisions * i)
 
-            circle = lgi.LEDGraphicsItem(x, y, 24, QColor(255, 0, 0, 255), i)
+            circle = lgi.LEDGraphicsItem(x, y, circleRadius, QColor(255, 0, 0, 255), i)
 
             self.ledCircles.append(circle)
             self.circleScene.addItem(circle)
